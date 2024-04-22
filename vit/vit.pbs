@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH -J ml-vit-pretrained
+#SBATCH -N1 --ntasks-per-node=10 --gres=gpu:V100:1
+#SBATCH --mem-per-cpu=32gb
+#SBATCH -t 1:00:00
+#SBATCH -o vit-ml-pretrained.out
+#SBATCH --mail-user=ojasw@gatech.edu
+
+module load anaconda3/2022.05.0.1
+conda init bash
+conda activate /home/hice1/oupadhyay3/scratch/.conda/envs/ha_76 1
+cd /home/hice1/oupadhyay3/scratch/ml-proj/code/vit
+python3 vit.py
